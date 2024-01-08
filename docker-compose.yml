@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  samplemicroservice.webapi:
+    image: ${DOCKER_REGISTRY-}samplemicroservicewebapi
+    build:
+      context: .
+      dockerfile: SampleMicroservice.WebAPI/Dockerfile
+
+  samplemicroservice.worker:
+    image: ${DOCKER_REGISTRY-}samplemicroserviceworker
+    build:
+      context: .
+      dockerfile: SampleMicroservice.Worker/Dockerfile
+

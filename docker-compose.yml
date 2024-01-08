@@ -6,9 +6,18 @@ services:
     build:
       context: .
       dockerfile: SampleMicroservice.WebAPI/Dockerfile
+    depends_on:
+      - redis-stack
 
   samplemicroservice.worker:
     image: ${DOCKER_REGISTRY-}samplemicroserviceworker
     build:
       context: .
       dockerfile: SampleMicroservice.Worker/Dockerfile
+    depends_on:
+      - redis-stack
+
+  redis-stack:
+    image: redis/redis-stack:latest  
+    ports:
+      - 8001:8001
